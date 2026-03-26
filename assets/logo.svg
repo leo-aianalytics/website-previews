@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <!-- Background -->
+  <rect width="400" height="120" fill="none"/>
+
+  <!-- Lion Icon Circle -->
+  <circle cx="55" cy="60" r="45" fill="#2C3E50"/>
+
+  <!-- Simplified Lion Head -->
+  <!-- Mane -->
+  <path d="M55 18 C30 18, 14 35, 14 58 C14 81, 30 98, 55 98 C80 98, 96 81, 96 58 C96 35, 80 18, 55 18Z" fill="#D4A843" opacity="0.9"/>
+
+  <!-- Face -->
+  <ellipse cx="55" cy="62" rx="24" ry="27" fill="#E8C86A"/>
+
+  <!-- Eyes -->
+  <ellipse cx="45" cy="54" rx="4" ry="4.5" fill="#2C3E50"/>
+  <ellipse cx="65" cy="54" rx="4" ry="4.5" fill="#2C3E50"/>
+  <circle cx="46" cy="53" r="1.2" fill="white"/>
+  <circle cx="66" cy="53" r="1.2" fill="white"/>
+
+  <!-- Nose -->
+  <path d="M52 62 L55 66 L58 62 Z" fill="#2C3E50"/>
+
+  <!-- Mouth -->
+  <path d="M48 70 Q55 76 62 70" stroke="#2C3E50" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+  <!-- Mane details -->
+  <path d="M28 30 Q35 22, 45 20" stroke="#C49A2E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M20 42 Q26 32, 35 26" stroke="#C49A2E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M82 30 Q75 22, 65 20" stroke="#C49A2E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M90 42 Q84 32, 75 26" stroke="#C49A2E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Ears -->
+  <ellipse cx="30" cy="38" rx="7" ry="9" fill="#D4A843" transform="rotate(-15, 30, 38)"/>
+  <ellipse cx="80" cy="38" rx="7" ry="9" fill="#D4A843" transform="rotate(15, 80, 38)"/>
+  <ellipse cx="31" cy="39" rx="4" ry="5.5" fill="#E8C86A" transform="rotate(-15, 31, 39)"/>
+  <ellipse cx="79" cy="39" rx="4" ry="5.5" fill="#E8C86A" transform="rotate(15, 79, 39)"/>
+
+  <!-- Company Name -->
+  <text x="115" y="50" font-family="'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="700" fill="#2C3E50">
+    Leo
+  </text>
+  <text x="115" y="82" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#666" letter-spacing="3">
+    AI ANALYTICS
+  </text>
+
+  <!-- Subtle accent line -->
+  <line x1="115" y1="56" x2="280" y2="56" stroke="#D4A843" stroke-width="2" opacity="0.6"/>
+</svg>
