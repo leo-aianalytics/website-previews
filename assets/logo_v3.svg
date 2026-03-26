@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 90" width="420" height="90">
+  <!-- Shield/Crest style with lion silhouette -->
+
+  <!-- Shield outline -->
+  <path d="M10 8 L70 8 L70 52 C70 72, 40 85, 40 85 C40 85, 10 72, 10 52Z"
+        fill="none" stroke="#1B2A4A" stroke-width="2.5"/>
+
+  <!-- Inner shield fill -->
+  <path d="M14 12 L66 12 L66 50 C66 68, 40 80, 40 80 C40 80, 14 68, 14 50Z"
+        fill="#1B2A4A"/>
+
+  <!-- Lion silhouette inside shield - facing right, regal profile -->
+  <g transform="translate(22, 18) scale(0.55)">
+    <!-- Mane -->
+    <path d="M35 5 C20 0, 5 12, 5 30 C5 48, 15 58, 30 62 C25 55, 20 45, 22 35 C24 25, 30 18, 35 15Z"
+          fill="#C9A84C" opacity="0.9"/>
+    <path d="M40 2 C28 -2, 10 8, 8 25 C6 42, 12 55, 25 62"
+          stroke="#C9A84C" stroke-width="3" fill="none" opacity="0.6"/>
+
+    <!-- Head -->
+    <ellipse cx="42" cy="28" rx="18" ry="22" fill="#C9A84C"/>
+
+    <!-- Ear -->
+    <ellipse cx="30" cy="14" rx="6" ry="8" fill="#C9A84C" transform="rotate(-10, 30, 14)"/>
+
+    <!-- Eye -->
+    <circle cx="46" cy="24" r="3" fill="#1B2A4A"/>
+
+    <!-- Snout -->
+    <path d="M52 30 C58 30, 62 34, 60 38 C58 42, 52 42, 48 38 C46 34, 48 30, 52 30Z"
+          fill="#B8943F"/>
+
+    <!-- Nose -->
+    <ellipse cx="58" cy="33" rx="2.5" ry="2" fill="#1B2A4A"/>
+
+    <!-- Jaw line -->
+    <path d="M48 42 C45 50, 38 56, 32 58" stroke="#B8943F" stroke-width="2" fill="none"/>
+
+    <!-- Crown-like detail on top -->
+    <path d="M32 8 L35 2 L38 8 L41 3 L44 8" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="88" y="40" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#1B2A4A" letter-spacing="2">
+    LEO
+  </text>
+
+  <!-- Divider -->
+  <line x1="88" y1="48" x2="160" y2="48" stroke="#C9A84C" stroke-width="1"/>
+
+  <!-- Subtitle -->
+  <text x="88" y="66" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="400" fill="#777" letter-spacing="4.5">
+    AI ANALYTICS
+  </text>
+</svg>

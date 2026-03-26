@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 90" width="400" height="90">
+  <!-- Ultra-clean monogram style: L icon + wordmark -->
+
+  <!-- Circle mark -->
+  <circle cx="40" cy="45" r="36" fill="#1B2A4A"/>
+
+  <!-- Stylized L with lion suggestion - single elegant stroke -->
+  <!-- The L curves into a subtle lion tail/mane flourish -->
+  <text x="24" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700" fill="#C9A84C">
+    L
+  </text>
+
+  <!-- Small crown/mane accent above the L -->
+  <path d="M28 22 L32 16 L36 22 L40 17 L44 22 L48 16 L52 22"
+        stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+
+  <!-- Company name -->
+  <text x="92" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" fill="#1B2A4A" letter-spacing="3">
+    LEO
+  </text>
+
+  <!-- Gold line -->
+  <line x1="92" y1="49" x2="168" y2="49" stroke="#C9A84C" stroke-width="1"/>
+
+  <!-- Subtitle -->
+  <text x="92" y="66" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#888" letter-spacing="5">
+    AI ANALYTICS
+  </text>
+</svg>
