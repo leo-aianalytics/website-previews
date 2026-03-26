@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoogasian Flowers | San Francisco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --cream: #FAF6ED;
+            --primary: #3D2B1F;
+            --accent: #B8860B;
+            --bg: #FDFAF2;
+            --text: #5A4E42;
+            --dark: #201510;
+        }
+        body { font-family: 'Work Sans', sans-serif; color: var(--dark); background: var(--bg); }
+        a { text-decoration: none; color: inherit; }
+
+        .top-bar {
+            background: var(--primary);
+            color: var(--cream);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .top-bar a { color: var(--accent); font-weight: 600; }
+
+        nav {
+            background: var(--bg);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-phone {
+            display: flex; align-items: center; gap: 8px;
+            color: var(--primary); font-weight: 600; font-size: 0.95rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            overflow: hidden;
+        }
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            background: var(--cream);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            width: fit-content;
+        }
+        .hero-text h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.25;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+        .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px;
+            background: var(--primary);
+            color: var(--cream);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: var(--primary); color: var(--cream); }
+        .hero-image {
+            background: url('images/hero.jpg') center/cover;
+            position: relative;
+        }
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.2));
+        }
+
+        .story { padding: 100px 40px; background: var(--bg); }
+        .story-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .story-images img {
+            width: 100%; border-radius: 6px; object-fit: cover;
+        }
+        .story-images img:first-child {
+            height: 280px; grid-column: span 2;
+        }
+        .story-images img:nth-child(2),
+        .story-images img:nth-child(3) { height: 180px; }
+        .story-label {
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 15px;
+        }
+        .story-text h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem; color: var(--primary);
+            margin-bottom: 20px; line-height: 1.3;
+        }
+        .story-text p {
+            color: var(--text); line-height: 1.85;
+            margin-bottom: 15px; font-size: 1.02rem;
+        }
+        .story-highlight {
+            margin-top: 25px; padding: 20px 25px;
+            background: var(--cream);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+        }
+        .story-highlight p {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic; color: var(--primary);
+            font-size: 1rem; margin: 0;
+        }
+
+        .services { padding: 100px 40px; background: var(--cream); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem; color: var(--primary); margin-bottom: 12px;
+        }
+        .section-header p {
+            color: var(--text); font-size: 1.05rem;
+            max-width: 500px; margin: 0 auto;
+        }
+        .services-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--bg); border-radius: 8px;
+            overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        .service-card img { width: 100%; height: 200px; object-fit: cover; }
+        .service-card-body { padding: 25px; }
+        .service-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem; color: var(--primary); margin-bottom: 10px;
+        }
+        .service-card p { color: var(--text); font-size: 0.92rem; line-height: 1.7; }
+
+        .experience {
+            background: var(--primary); color: var(--cream); padding: 80px 40px;
+        }
+        .experience-inner {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px; text-align: center;
+        }
+        .exp-item .number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem; color: var(--accent); margin-bottom: 8px;
+        }
+        .exp-item .label {
+            font-size: 0.85rem; letter-spacing: 1px;
+            text-transform: uppercase; opacity: 0.7;
+        }
+
+        .reviews { padding: 100px 40px; background: var(--bg); }
+        .reviews-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .review-card {
+            background: var(--cream); padding: 30px;
+            border-radius: 8px; position: relative;
+        }
+        .review-card::before {
+            content: '\201C';
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem; color: var(--accent); opacity: 0.3;
+            position: absolute; top: 10px; left: 20px; line-height: 1;
+        }
+        .review-stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .review-card p {
+            color: var(--text); line-height: 1.7; font-size: 0.95rem;
+            margin-bottom: 15px; position: relative; z-index: 1;
+        }
+        .review-author { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+        .review-source { color: var(--accent); font-size: 0.8rem; font-weight: 500; }
+
+        .visit { padding: 100px 40px; background: var(--cream); }
+        .visit-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+        }
+        .visit-info h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem; color: var(--primary); margin-bottom: 25px;
+        }
+        .visit-item {
+            display: flex; gap: 15px; margin-bottom: 22px; align-items: flex-start;
+        }
+        .visit-icon {
+            width: 44px; height: 44px; background: var(--primary);
+            color: var(--accent); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+        .visit-item-text h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 3px; }
+        .visit-item-text p { color: var(--text); font-size: 0.92rem; line-height: 1.5; }
+        .visit-item-text a { color: var(--accent); font-weight: 500; }
+        .hours-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .hours-table td {
+            padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.92rem; color: var(--text);
+        }
+        .hours-table td:last-child { text-align: right; font-weight: 600; color: var(--primary); }
+
+        .visit-map {
+            background: url('images/location.jpg') center/cover;
+            border-radius: 10px; min-height: 400px;
+            position: relative; display: flex;
+            align-items: flex-end; padding: 25px;
+        }
+        .map-overlay {
+            background: rgba(0,0,0,0.85); color: var(--cream);
+            padding: 20px 25px; border-radius: 8px; width: 100%;
+        }
+        .map-overlay h4 { margin-bottom: 5px; font-size: 0.95rem; }
+        .map-overlay p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 12px; }
+        .map-overlay a {
+            display: inline-block; padding: 8px 20px;
+            background: var(--accent); color: white;
+            border-radius: 4px; font-weight: 600; font-size: 0.85rem;
+        }
+
+        footer {
+            background: var(--primary); color: rgba(255,255,255,0.5);
+            padding: 40px; text-align: center;
+        }
+        footer .footer-logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem; color: var(--cream); margin-bottom: 8px;
+        }
+        footer p { font-size: 0.85rem; line-height: 1.8; }
+        footer a { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-image { min-height: 50vh; }
+            .hero-text { padding: 50px 25px; }
+            .story-inner { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .experience-inner { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .visit-grid { grid-template-columns: 1fr; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Call us at <a href="tel:4152292732">(415) 229-2732</a></div>
+
+    <nav>
+        <div class="logo">Hoogasian Flowers</div>
+        <ul class="nav-links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#visit">Visit</a></li>
+        </ul>
+        <a href="tel:4152292732" class="nav-phone">&#9742; (415) 229-2732</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-badge">SOMA • 4.8 Stars • 201 Reviews</div>
+            <h1>South of Market blooms since day one</h1>
+            <p>Tucked between Brannan and Townsend, Hoogasian Flowers has been arranging life's moments for San Francisco families for years. With nearly 200 five-star reviews, they're the florists who remember your anniversary and know exactly what your mom would love.</p>
+            <div class="hero-actions">
+                <a href="tel:4152292732" class="btn-primary">&#9742; Call to Order</a>
+                <a href="#visit" class="btn-secondary">Find Us</a>
+            </div>
+        </div>
+        <div class="hero-image" role="img" aria-label="Hoogasian Flowers"></div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-inner">
+            <div class="story-images">
+                <img src="images/story_main.jpg" alt="Hoogasian Flowers">
+                <img src="images/story_detail1.jpg" alt="Hoogasian Flowers detail">
+                <img src="images/story_detail2.jpg" alt="Hoogasian Flowers atmosphere">
+            </div>
+            <div class="story-text">
+                <div class="story-label">Our Story</div>
+                <h2>Growing roots on 7th Street</h2>
+                <p>Long before the tech towers sprouted around SOMA, the Hoogasian family was already making this corner of 7th Street bloom. What started as a small neighborhood flower shop has grown into the kind of place where three generations of the same family come for their wedding flowers.</p>
+                <p>Walk into their shop any morning and you'll find them arranging stems that arrived before dawn from the flower market. The Hoogasians still hand-pick every rose and personally design each arrangement, whether it's a simple 'thinking of you' bouquet or an elaborate corporate installation for the nearby offices.</p>
+                <p>It's the kind of place where they remember that Mrs. Chen from Potrero Hill prefers white lilies, and they'll stay late on Valentine's Day to help the guy who forgot until 6 PM. After all these years on 7th Street, they've become part of the neighborhood's most important moments.</p>
+                <div class='story-highlight'><p>"These folks saved my marriage! Called at 4:30 on a Friday completely panicked about forgetting our anniversary, and they stayed open an extra 20 minutes to make the most gorgeous arrangement. My wife still talks about those peonies. Worth every penny."</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>How we help you bloom</h2>
+            <p>From everyday surprises to once-in-a-lifetime celebrations</p>
+        </div>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <img src="images/service1.jpg" alt="Custom Arrangements">
+                <div class="service-card-body">
+                    <h3>Custom Arrangements</h3>
+                    <p>Tell us the story and we'll create the perfect bouquet to match. Whether it's a first date or a fiftieth anniversary, we design each arrangement to feel as personal as the moment itself.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="images/service2.jpg" alt="Wedding & Event Florals">
+                <div class="service-card-body">
+                    <h3>Wedding & Event Florals</h3>
+                    <p>From intimate City Hall ceremonies to full South Beach warehouse receptions, we handle every petal. We'll meet with you months ahead to understand your vision, then make it bloom beautifully on your big day.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="images/service3.jpg" alt="Corporate & Delivery">
+                <div class="service-card-body">
+                    <h3>Corporate & Delivery</h3>
+                    <p>Weekly office arrangements that actually look alive, or same-day apology deliveries to anywhere in the city. We know the doormen at half the buildings in SOMA and can get flowers where they need to go, fast.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="reviews" id="reviews">
+        <div class="section-header">
+            <h2>From Our Customers</h2>
+            <p>Real reviews from real neighbors</p>
+        </div>
+        <div class="reviews-grid">
+            
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>These folks saved my marriage! Called at 4:30 on a Friday completely panicked about forgetting our anniversary, and they stayed open an extra 20 minutes to make the most gorgeous arrangement. My wife still talks about those peonies. Worth every penny.</p>
+                <div class="review-author">David M.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>Used them for our wedding last spring and they were incredible. The bridal bouquet was exactly what I pictured but couldn't describe, and the centerpieces made our venue look like something from a magazine. Professional and so sweet to work with.</p>
+                <div class="review-author">Sarah K.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;</div>
+                <p>Been getting flowers here for years. They remember my mom loves yellow roses and always have them looking fresh. Good prices for the neighborhood too.</p>
+                <div class="review-author">Maria L.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="visit" id="visit">
+        <div class="visit-grid">
+            <div class="visit-info">
+                <h2>Come see us</h2>
+                <div class="visit-item">
+                    <div class="visit-icon">&#128205;</div>
+                    <div class="visit-item-text">
+                        <h4>Find Us</h4>
+                        <p>615 7th St, San Francisco, CA 94103</p>
+                        <a href="https://maps.google.com/?q=615+7th+St%2C+San+Francisco%2C+CA+94103">Get directions &rarr;</a>
+                    </div>
+                </div>
+                <div class="visit-item">
+                    <div class="visit-icon">&#9742;</div>
+                    <div class="visit-item-text">
+                        <h4>Call Us</h4>
+                        <a href="tel:4152292732">(415) 229-2732</a>
+                    </div>
+                </div>
+                
+                <div class="visit-item">
+                    <div class="visit-icon">&#128179;</div>
+                    <div class="visit-item-text">
+                        <h4>Payment</h4>
+                        <p>Cash and credit cards accepted</p>
+                    </div>
+                </div>
+                <div class="visit-item">
+                    <div class="visit-icon">&#128344;</div>
+                    <div class="visit-item-text"><h4>Hours</h4></div>
+                </div>
+                <table class="hours-table">
+                    <tr><td>Monday - Friday</td><td>9 AM - 5 PM</td></tr>
+
+                </table>
+            </div>
+            <div class="visit-map">
+                <div class="map-overlay">
+                    <h4>San Francisco</h4>
+                    <p>Right on 7th Street between Brannan and Townsend, walking distance from Caltrain and surrounded by the best of SOMA.</p>
+                    <a href="https://maps.google.com/?q=615+7th+St%2C+San+Francisco%2C+CA+94103">Open in Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Hoogasian Flowers</div>
+        <p>615 7th St, San Francisco, CA 94103 &bull; <a href="tel:4152292732">(415) 229-2732</a></p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">
+            Prototype by <a href="#">Your Web Design Studio</a>
+        </p>
+    </footer>
+
+</body>
+</html>

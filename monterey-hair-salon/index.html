@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monterey Hair Salon | San Francisco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --cream: #F5F0E8;
+            --primary: #2C1810;
+            --accent: #C5963A;
+            --bg: #FAF7F2;
+            --text: #4A4A4A;
+            --dark: #1C1C1C;
+        }
+        body { font-family: 'Work Sans', sans-serif; color: var(--dark); background: var(--bg); }
+        a { text-decoration: none; color: inherit; }
+
+        .top-bar {
+            background: var(--primary);
+            color: var(--cream);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .top-bar a { color: var(--accent); font-weight: 600; }
+
+        nav {
+            background: var(--bg);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-phone {
+            display: flex; align-items: center; gap: 8px;
+            color: var(--primary); font-weight: 600; font-size: 0.95rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            overflow: hidden;
+        }
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            background: var(--cream);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            width: fit-content;
+        }
+        .hero-text h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.25;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+        .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px;
+            background: var(--primary);
+            color: var(--cream);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: var(--primary); color: var(--cream); }
+        .hero-image {
+            background: url('images/hero.jpg') center/cover;
+            position: relative;
+        }
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.2));
+        }
+
+        .story { padding: 100px 40px; background: var(--bg); }
+        .story-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .story-images img {
+            width: 100%; border-radius: 6px; object-fit: cover;
+        }
+        .story-images img:first-child {
+            height: 280px; grid-column: span 2;
+        }
+        .story-images img:nth-child(2),
+        .story-images img:nth-child(3) { height: 180px; }
+        .story-label {
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 15px;
+        }
+        .story-text h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem; color: var(--primary);
+            margin-bottom: 20px; line-height: 1.3;
+        }
+        .story-text p {
+            color: var(--text); line-height: 1.85;
+            margin-bottom: 15px; font-size: 1.02rem;
+        }
+        .story-highlight {
+            margin-top: 25px; padding: 20px 25px;
+            background: var(--cream);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+        }
+        .story-highlight p {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic; color: var(--primary);
+            font-size: 1rem; margin: 0;
+        }
+
+        .services { padding: 100px 40px; background: var(--cream); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem; color: var(--primary); margin-bottom: 12px;
+        }
+        .section-header p {
+            color: var(--text); font-size: 1.05rem;
+            max-width: 500px; margin: 0 auto;
+        }
+        .services-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--bg); border-radius: 8px;
+            overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        .service-card img { width: 100%; height: 200px; object-fit: cover; }
+        .service-card-body { padding: 25px; }
+        .service-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem; color: var(--primary); margin-bottom: 10px;
+        }
+        .service-card p { color: var(--text); font-size: 0.92rem; line-height: 1.7; }
+
+        .experience {
+            background: var(--primary); color: var(--cream); padding: 80px 40px;
+        }
+        .experience-inner {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px; text-align: center;
+        }
+        .exp-item .number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem; color: var(--accent); margin-bottom: 8px;
+        }
+        .exp-item .label {
+            font-size: 0.85rem; letter-spacing: 1px;
+            text-transform: uppercase; opacity: 0.7;
+        }
+
+        .reviews { padding: 100px 40px; background: var(--bg); }
+        .reviews-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .review-card {
+            background: var(--cream); padding: 30px;
+            border-radius: 8px; position: relative;
+        }
+        .review-card::before {
+            content: '\201C';
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem; color: var(--accent); opacity: 0.3;
+            position: absolute; top: 10px; left: 20px; line-height: 1;
+        }
+        .review-stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .review-card p {
+            color: var(--text); line-height: 1.7; font-size: 0.95rem;
+            margin-bottom: 15px; position: relative; z-index: 1;
+        }
+        .review-author { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+        .review-source { color: var(--accent); font-size: 0.8rem; font-weight: 500; }
+
+        .visit { padding: 100px 40px; background: var(--cream); }
+        .visit-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+        }
+        .visit-info h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem; color: var(--primary); margin-bottom: 25px;
+        }
+        .visit-item {
+            display: flex; gap: 15px; margin-bottom: 22px; align-items: flex-start;
+        }
+        .visit-icon {
+            width: 44px; height: 44px; background: var(--primary);
+            color: var(--accent); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+        .visit-item-text h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 3px; }
+        .visit-item-text p { color: var(--text); font-size: 0.92rem; line-height: 1.5; }
+        .visit-item-text a { color: var(--accent); font-weight: 500; }
+        .hours-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .hours-table td {
+            padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.92rem; color: var(--text);
+        }
+        .hours-table td:last-child { text-align: right; font-weight: 600; color: var(--primary); }
+
+        .visit-map {
+            background: url('images/location.jpg') center/cover;
+            border-radius: 10px; min-height: 400px;
+            position: relative; display: flex;
+            align-items: flex-end; padding: 25px;
+        }
+        .map-overlay {
+            background: rgba(0,0,0,0.85); color: var(--cream);
+            padding: 20px 25px; border-radius: 8px; width: 100%;
+        }
+        .map-overlay h4 { margin-bottom: 5px; font-size: 0.95rem; }
+        .map-overlay p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 12px; }
+        .map-overlay a {
+            display: inline-block; padding: 8px 20px;
+            background: var(--accent); color: white;
+            border-radius: 4px; font-weight: 600; font-size: 0.85rem;
+        }
+
+        footer {
+            background: var(--primary); color: rgba(255,255,255,0.5);
+            padding: 40px; text-align: center;
+        }
+        footer .footer-logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem; color: var(--cream); margin-bottom: 8px;
+        }
+        footer p { font-size: 0.85rem; line-height: 1.8; }
+        footer a { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-image { min-height: 50vh; }
+            .hero-text { padding: 50px 25px; }
+            .story-inner { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .experience-inner { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .visit-grid { grid-template-columns: 1fr; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Call us at <a href="tel:4155300714">(415) 530-0714</a></div>
+
+    <nav>
+        <div class="logo">Monterey Hair Salon</div>
+        <ul class="nav-links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#visit">Visit</a></li>
+        </ul>
+        <a href="tel:4155300714" class="nav-phone">&#9742; (415) 530-0714</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-badge">SF 94127 • 4.8 Stars • 157 Reviews</div>
+            <h1>Your neighborhood cut, done right every time</h1>
+            <p>Monterey Hair Salon has been a quiet anchor on Monterey Blvd for the folks in the neighborhood — the kind of place where you walk in a little stressed and leave feeling like yourself again. With a 4.8-star reputation built on 157 real reviews, this isn't a trendy spot chasing Instagram looks. It's just a really good barber and salon that knows what it's doing.</p>
+            <div class="hero-actions">
+                <a href="tel:4155300714" class="btn-primary">&#9742; Call to Book</a>
+                <a href="#visit" class="btn-secondary">Find Us</a>
+            </div>
+        </div>
+        <div class="hero-image" role="img" aria-label="Monterey Hair Salon"></div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-inner">
+            <div class="story-images">
+                <img src="images/story_main.jpg" alt="Monterey Hair Salon">
+                <img src="images/story_detail1.jpg" alt="Monterey Hair Salon detail">
+                <img src="images/story_detail2.jpg" alt="Monterey Hair Salon atmosphere">
+            </div>
+            <div class="story-text">
+                <div class="story-label">Our Story</div>
+                <h2>A corner of Monterey Blvd that never rushes you</h2>
+                <p>Tucked between Edna and Foerster on Monterey Boulevard, this little salon sits in one of those San Francisco neighborhoods that still feels like a neighborhood. The kind where people walk to the coffee shop, know their mail carrier, and have had the same barber for years. That's exactly the energy inside Monterey Hair Salon — unhurried, personal, and genuinely focused on making you look good.</p>
+                <p>The people behind the chairs here take their craft seriously without taking themselves too seriously. They'll ask what you want, actually listen, and — this is rarer than it should be — tell you honestly if they think something else might suit you better. Whether you're coming in for a tight fade or a full cut and style, the attention is the same. No assembly line, no rush to get to the next client.</p>
+                <p>What keeps people coming back to a place like this isn't just the haircut — it's how the whole thing feels. You know your name is remembered. You know the person cutting your hair is paying attention. In a city that moves fast, having one place that slows down a little and just does good work on you is worth a lot. That's what 157 people have been trying to say.</p>
+                <div class='story-highlight'><p>"I've been going to Monterey Hair Salon for almost two years now and I genuinely can't imagine going anywhere else. I have curly, thick hair that most places butcher, and from my first visit they just... got it. Showed up yesterday after a rough week and walked out feeling like a completely different person. That sounds dramatic but it's just true."</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>What Happens in the Chair</h2>
+            <p>Classic cuts and styling done with care — no unnecessary upsells, just solid work</p>
+        </div>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <img src="images/service1.jpg" alt="Haircut & Style">
+                <div class="service-card-body">
+                    <h3>Haircut & Style</h3>
+                    <p>A proper cut that starts with a real conversation about what you want and ends with something you'll actually like in the mirror. No guessing, no generic shapes — just a style that fits your head and your life.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="images/service2.jpg" alt="Beard Trim & Shaping">
+                <div class="service-card-body">
+                    <h3>Beard Trim & Shaping</h3>
+                    <p>Whether you're maintaining a full beard or cleaning up the edges, the detail work here is careful and precise. You leave looking cleaned up without feeling like someone just ran a lawnmower across your face.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="images/service3.jpg" alt="Full Service Barber Cut">
+                <div class="service-card-body">
+                    <h3>Full Service Barber Cut</h3>
+                    <p>The works — cut, taper, edge-up, and finish — done the way barbering is supposed to be done. It's the kind of experience that makes you realize how long you'd been settling for less somewhere else.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="reviews" id="reviews">
+        <div class="section-header">
+            <h2>From Our Customers</h2>
+            <p>Real reviews from real neighbors</p>
+        </div>
+        <div class="reviews-grid">
+            
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>I've been going to Monterey Hair Salon for almost two years now and I genuinely can't imagine going anywhere else. I have curly, thick hair that most places butcher, and from my first visit they just... got it. Showed up yesterday after a rough week and walked out feeling like a completely different person. That sounds dramatic but it's just true.</p>
+                <div class="review-author">Marcus T.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;</div>
+                <p>Solid place. Did exactly what I asked, no fuss. I appreciate that they didn't try to talk me into some big treatment package or upsell me on products. Just a clean cut at a fair price. Will be back.</p>
+                <div class="review-author">David R.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>I moved to the neighborhood six months ago and finding this place was honestly one of the better things that happened. The person who cut my hair remembered my name on my second visit. Small thing, but it matters. Super easy to get to on Muni too — right off the 36 line.</p>
+                <div class="review-author">Priya S.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="visit" id="visit">
+        <div class="visit-grid">
+            <div class="visit-info">
+                <h2>Come see us</h2>
+                <div class="visit-item">
+                    <div class="visit-icon">&#128205;</div>
+                    <div class="visit-item-text">
+                        <h4>Find Us</h4>
+                        <p>597 Monterey Blvd, San Francisco, CA 94127</p>
+                        <a href="https://maps.google.com/?q=597+Monterey+Blvd%2C+San+Francisco%2C+CA+94127">Get directions &rarr;</a>
+                    </div>
+                </div>
+                <div class="visit-item">
+                    <div class="visit-icon">&#9742;</div>
+                    <div class="visit-item-text">
+                        <h4>Call Us</h4>
+                        <a href="tel:4155300714">(415) 530-0714</a>
+                    </div>
+                </div>
+                
+                <div class="visit-item">
+                    <div class="visit-icon">&#128179;</div>
+                    <div class="visit-item-text">
+                        <h4>Payment</h4>
+                        <p>Cash and major credit cards accepted</p>
+                    </div>
+                </div>
+                <div class="visit-item">
+                    <div class="visit-icon">&#128344;</div>
+                    <div class="visit-item-text"><h4>Hours</h4></div>
+                </div>
+                <table class="hours-table">
+                    <tr><td>Monday - Friday</td><td>9 AM - 5 PM</td></tr>
+
+                </table>
+            </div>
+            <div class="visit-map">
+                <div class="map-overlay">
+                    <h4>San Francisco</h4>
+                    <p>Located at 597 Monterey Blvd at the corner of Edna and Foerster Streets — walkable from Glen Park and accessible via the 36 Teresita Muni line.</p>
+                    <a href="https://maps.google.com/?q=597+Monterey+Blvd%2C+San+Francisco%2C+CA+94127">Open in Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Monterey Hair Salon</div>
+        <p>597 Monterey Blvd, San Francisco, CA 94127 &bull; <a href="tel:4155300714">(415) 530-0714</a></p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">
+            Prototype by <a href="#">Your Web Design Studio</a>
+        </p>
+    </footer>
+
+</body>
+</html>

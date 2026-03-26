@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People's Barber & Shop | San Francisco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --cream: #F8F0F5;
+            --primary: #4A2040;
+            --accent: #B8548A;
+            --bg: #FDF8FB;
+            --text: #5A4A55;
+            --dark: #1C1020;
+        }
+        body { font-family: 'Work Sans', sans-serif; color: var(--dark); background: var(--bg); }
+        a { text-decoration: none; color: inherit; }
+
+        .top-bar {
+            background: var(--primary);
+            color: var(--cream);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .top-bar a { color: var(--accent); font-weight: 600; }
+
+        nav {
+            background: var(--bg);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-phone {
+            display: flex; align-items: center; gap: 8px;
+            color: var(--primary); font-weight: 600; font-size: 0.95rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            overflow: hidden;
+        }
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            background: var(--cream);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            width: fit-content;
+        }
+        .hero-text h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.25;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+        .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px;
+            background: var(--primary);
+            color: var(--cream);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: var(--primary); color: var(--cream); }
+        .hero-image {
+            background: url('images/hero.jpg') center/cover;
+            position: relative;
+        }
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.2));
+        }
+
+        .story { padding: 100px 40px; background: var(--bg); }
+        .story-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .story-images img {
+            width: 100%; border-radius: 6px; object-fit: cover;
+        }
+        .story-images img:first-child {
+            height: 280px; grid-column: span 2;
+        }
+        .story-images img:nth-child(2),
+        .story-images img:nth-child(3) { height: 180px; }
+        .story-label {
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 15px;
+        }
+        .story-text h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem; color: var(--primary);
+            margin-bottom: 20px; line-height: 1.3;
+        }
+        .story-text p {
+            color: var(--text); line-height: 1.85;
+            margin-bottom: 15px; font-size: 1.02rem;
+        }
+        .story-highlight {
+            margin-top: 25px; padding: 20px 25px;
+            background: var(--cream);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+        }
+        .story-highlight p {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic; color: var(--primary);
+            font-size: 1rem; margin: 0;
+        }
+
+        .services { padding: 100px 40px; background: var(--cream); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem; color: var(--primary); margin-bottom: 12px;
+        }
+        .section-header p {
+            color: var(--text); font-size: 1.05rem;
+            max-width: 500px; margin: 0 auto;
+        }
+        .services-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--bg); border-radius: 8px;
+            overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        .service-card img { width: 100%; height: 200px; object-fit: cover; }
+        .service-card-body { padding: 25px; }
+        .service-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem; color: var(--primary); margin-bottom: 10px;
+        }
+        .service-card p { color: var(--text); font-size: 0.92rem; line-height: 1.7; }
+
+        .experience {
+            background: var(--primary); color: var(--cream); padding: 80px 40px;
+        }
+        .experience-inner {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px; text-align: center;
+        }
+        .exp-item .number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem; color: var(--accent); margin-bottom: 8px;
+        }
+        .exp-item .label {
+            font-size: 0.85rem; letter-spacing: 1px;
+            text-transform: uppercase; opacity: 0.7;
+        }
+
+        .reviews { padding: 100px 40px; background: var(--bg); }
+        .reviews-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .review-card {
+            background: var(--cream); padding: 30px;
+            border-radius: 8px; position: relative;
+        }
+        .review-card::before {
+            content: '\201C';
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem; color: var(--accent); opacity: 0.3;
+            position: absolute; top: 10px; left: 20px; line-height: 1;
+        }
+        .review-stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .review-card p {
+            color: var(--text); line-height: 1.7; font-size: 0.95rem;
+            margin-bottom: 15px; position: relative; z-index: 1;
+        }
+        .review-author { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+        .review-source { color: var(--accent); font-size: 0.8rem; font-weight: 500; }
+
+        .visit { padding: 100px 40px; background: var(--cream); }
+        .visit-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+        }
+        .visit-info h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem; color: var(--primary); margin-bottom: 25px;
+        }
+        .visit-item {
+            display: flex; gap: 15px; margin-bottom: 22px; align-items: flex-start;
+        }
+        .visit-icon {
+            width: 44px; height: 44px; background: var(--primary);
+            color: var(--accent); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+        .visit-item-text h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 3px; }
+        .visit-item-text p { color: var(--text); font-size: 0.92rem; line-height: 1.5; }
+        .visit-item-text a { color: var(--accent); font-weight: 500; }
+        .hours-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .hours-table td {
+            padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.92rem; color: var(--text);
+        }
+        .hours-table td:last-child { text-align: right; font-weight: 600; color: var(--primary); }
+
+        .visit-map {
+            background: url('images/location.jpg') center/cover;
+            border-radius: 10px; min-height: 400px;
+            position: relative; display: flex;
+            align-items: flex-end; padding: 25px;
+        }
+        .map-overlay {
+            background: rgba(0,0,0,0.85); color: var(--cream);
+            padding: 20px 25px; border-radius: 8px; width: 100%;
+        }
+        .map-overlay h4 { margin-bottom: 5px; font-size: 0.95rem; }
+        .map-overlay p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 12px; }
+        .map-overlay a {
+            display: inline-block; padding: 8px 20px;
+            background: var(--accent); color: white;
+            border-radius: 4px; font-weight: 600; font-size: 0.85rem;
+        }
+
+        footer {
+            background: var(--primary); color: rgba(255,255,255,0.5);
+            padding: 40px; text-align: center;
+        }
+        footer .footer-logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem; color: var(--cream); margin-bottom: 8px;
+        }
+        footer p { font-size: 0.85rem; line-height: 1.8; }
+        footer a { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-image { min-height: 50vh; }
+            .hero-text { padding: 50px 25px; }
+            .story-inner { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .experience-inner { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .visit-grid { grid-template-columns: 1fr; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Call us at <a href="tel:4156587799">(415) 658-7799</a></div>
+
+    <nav>
+        <div class="logo">People's Barber & Shop</div>
+        <ul class="nav-links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#visit">Visit</a></li>
+        </ul>
+        <a href="tel:4156587799" class="nav-phone">&#9742; (415) 658-7799</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-badge">SoMa • 4.3 Stars • 158 Reviews</div>
+            <h1>Your cut, your block, your barber.</h1>
+            <p>People's Barber & Shop on Townsend is the kind of place you stumble into once and start scheduling your whole month around. It's a real barbershop — no frills, no attitude, just sharp cuts and people who actually remember your name. Over 150 Yelp reviews don't lie: this place has earned its spot.</p>
+            <div class="hero-actions">
+                <a href="tel:4156587799" class="btn-primary">&#9742; Call to Book</a>
+                <a href="#visit" class="btn-secondary">Find Us</a>
+            </div>
+        </div>
+        <div class="hero-image" role="img" aria-label="People's Barber & Shop"></div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-inner">
+            <div class="story-images">
+                <img src="images/story_main.jpg" alt="People's Barber & Shop">
+                <img src="images/story_detail1.jpg" alt="People's Barber & Shop detail">
+                <img src="images/story_detail2.jpg" alt="People's Barber & Shop atmosphere">
+            </div>
+            <div class="story-text">
+                <div class="story-label">Our Story</div>
+                <h2>A Barbershop That Actually Belongs Here</h2>
+                <p>Tucked on Townsend just off Colin P Kelly Jr Street, People's Barber & Shop sits in a corner of SoMa that's seen a lot of change over the years — tech offices, new condos, the whole transformation. Through all of it, this place has stayed exactly what it is: a barbershop where people come to get a good cut without any nonsense attached to it.</p>
+                <p>The barbers here have a way of reading what you actually want, not just what you say. Whether you walk in knowing exactly what you need or you're the type who just says 'same as last time,' they've got you. They open early most days and stay open late, because they know San Francisco doesn't run on a nine-to-five schedule, and neither do they.</p>
+                <p>What keeps people coming back — and you can see it in the reviews, in the regulars who show up every few weeks like clockwork — is that feeling of being taken care of. Not pampered, not upsold. Just taken care of. In a city that moves fast and doesn't slow down much, having one place that feels genuinely steady is worth more than people say out loud.</p>
+                <div class='story-highlight'><p>"Been coming here for almost two years now. I moved to the Mission but I still make the trip down to Townsend because I haven't found anyone else who does my fade the way they do here. It's just consistent. Every single time."</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>The Work</h2>
+            <p>Classic cuts and clean fades, done right every time — no shortcuts, no rushing you out the door.</p>
+        </div>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <img src="images/service1.jpg" alt="Haircut">
+                <div class="service-card-body">
+                    <h3>Haircut</h3>
+                    <p>A proper haircut that actually matches what you had in mind. They take their time with it, and you'll leave looking like yourself — just a better-rested, sharper version.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="images/service2.jpg" alt="Beard Trim & Lineup">
+                <div class="service-card-body">
+                    <h3>Beard Trim & Lineup</h3>
+                    <p>The kind of cleanup that makes your whole face look more put-together without you being able to explain exactly why. Clean edges, natural shape, done with a straight razor.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="images/service3.jpg" alt="Haircut & Beard Combo">
+                <div class="service-card-body">
+                    <h3>Haircut & Beard Combo</h3>
+                    <p>When you want the full reset — fresh cut, tight beard, out the door feeling like you've got it together. A solid hour of someone else's full attention, and it shows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="reviews" id="reviews">
+        <div class="section-header">
+            <h2>From Our Customers</h2>
+            <p>Real reviews from real neighbors</p>
+        </div>
+        <div class="reviews-grid">
+            
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>Been coming here for almost two years now. I moved to the Mission but I still make the trip down to Townsend because I haven't found anyone else who does my fade the way they do here. It's just consistent. Every single time.</p>
+                <div class="review-author">Marcus T.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;</div>
+                <p>Walked in on a Saturday without an appointment, fully expecting to wait forever. Was in the chair in like 20 minutes. Good conversation, great cut, and honestly the price is fair for SF. Four stars only because parking on Townsend is a nightmare — that's not on them.</p>
+                <div class="review-author">Daniel R.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>This is my spot. That's all I have to say.</p>
+                <div class="review-author">Jerome W.</div>
+                <div class="review-source">via Yelp</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="visit" id="visit">
+        <div class="visit-grid">
+            <div class="visit-info">
+                <h2>Come see us</h2>
+                <div class="visit-item">
+                    <div class="visit-icon">&#128205;</div>
+                    <div class="visit-item-text">
+                        <h4>Find Us</h4>
+                        <p>133 Townsend St, San Francisco, CA 94107</p>
+                        <a href="https://maps.google.com/?q=133+Townsend+St%2C+San+Francisco%2C+CA+94107">Get directions &rarr;</a>
+                    </div>
+                </div>
+                <div class="visit-item">
+                    <div class="visit-icon">&#9742;</div>
+                    <div class="visit-item-text">
+                        <h4>Call Us</h4>
+                        <a href="tel:4156587799">(415) 658-7799</a>
+                    </div>
+                </div>
+                
+                <div class="visit-item">
+                    <div class="visit-icon">&#128179;</div>
+                    <div class="visit-item-text">
+                        <h4>Payment</h4>
+                        <p>Cash and major credit cards accepted</p>
+                    </div>
+                </div>
+                <div class="visit-item">
+                    <div class="visit-icon">&#128344;</div>
+                    <div class="visit-item-text"><h4>Hours</h4></div>
+                </div>
+                <table class="hours-table">
+                    <tr><td>Monday - Friday</td><td>9 AM - 5 PM</td></tr>
+
+                </table>
+            </div>
+            <div class="visit-map">
+                <div class="map-overlay">
+                    <h4>San Francisco</h4>
+                    <p>Find us at 133 Townsend St, right near Colin P Kelly Jr Street in SoMa — a short walk from Caltrain and easy to reach from the Embarcadero or Mission Bay.</p>
+                    <a href="https://maps.google.com/?q=133+Townsend+St%2C+San+Francisco%2C+CA+94107">Open in Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">People's Barber & Shop</div>
+        <p>133 Townsend St, San Francisco, CA 94107 &bull; <a href="tel:4156587799">(415) 658-7799</a></p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">
+            Prototype by <a href="#">Your Web Design Studio</a>
+        </p>
+    </footer>
+
+</body>
+</html>
