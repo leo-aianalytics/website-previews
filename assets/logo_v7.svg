@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="500" height="120">
+
+  <!-- Lion at computer - simple, playful caricature -->
+  <g transform="translate(10, 8) scale(0.95)">
+
+    <!-- Desk / table surface -->
+    <rect x="15" y="85" width="80" height="4" rx="1" fill="#C9A84C" opacity="0.5"/>
+
+    <!-- Laptop base -->
+    <rect x="28" y="75" width="40" height="10" rx="2" fill="#8899AA"/>
+    <rect x="30" y="77" width="36" height="6" rx="1" fill="#667788"/>
+    <!-- Keyboard dots -->
+    <rect x="34" y="79" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="38" y="79" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="42" y="79" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="46" y="79" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="50" y="79" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="54" y="79" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="58" y="79" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="34" y="81" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="38" y="81" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="42" y="81" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="46" y="81" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="50" y="81" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="54" y="81" width="2" height="1" rx="0.5" fill="#99AABB"/>
+    <rect x="58" y="81" width="2" height="1" rx="0.5" fill="#99AABB"/>
+
+    <!-- Laptop screen -->
+    <rect x="30" y="48" width="36" height="27" rx="2" fill="#2C3E50"/>
+    <rect x="32" y="50" width="32" height="22" rx="1" fill="#3498DB" opacity="0.3"/>
+    <!-- Screen content - little website wireframe -->
+    <rect x="34" y="52" width="28" height="3" rx="0.5" fill="#E8F4FD" opacity="0.6"/>
+    <rect x="34" y="57" width="12" height="8" rx="0.5" fill="#E8F4FD" opacity="0.3"/>
+    <rect x="48" y="57" width="14" height="2" rx="0.5" fill="#E8F4FD" opacity="0.4"/>
+    <rect x="48" y="60" width="14" height="2" rx="0.5" fill="#E8F4FD" opacity="0.3"/>
+    <rect x="48" y="63" width="10" height="2" rx="0.5" fill="#E8F4FD" opacity="0.2"/>
+    <rect x="34" y="67" width="6" height="3" rx="1" fill="#C9A84C" opacity="0.5"/>
+
+    <!-- Lion body -->
+    <ellipse cx="48" cy="68" rx="20" ry="14" fill="#D4943A"/>
+
+    <!-- Arms reaching to keyboard -->
+    <path d="M32 66 C28 72, 30 76, 35 77" stroke="#D4943A" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M64 66 C68 72, 66 76, 61 77" stroke="#D4943A" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- Paws -->
+    <circle cx="35" cy="78" r="3.5" fill="#C4842A"/>
+    <circle cx="61" cy="78" r="3.5" fill="#C4842A"/>
+
+    <!-- Mane - full, flowing circle behind head -->
+    <circle cx="48" cy="38" r="24" fill="#B5751A"/>
+    <!-- Mane tufts -->
+    <circle cx="28" cy="30" r="6" fill="#C4842A"/>
+    <circle cx="34" cy="18" r="7" fill="#C4842A"/>
+    <circle cx="48" cy="14" r="7" fill="#C4842A"/>
+    <circle cx="62" cy="18" r="7" fill="#C4842A"/>
+    <circle cx="68" cy="30" r="6" fill="#C4842A"/>
+    <circle cx="26" cy="42" r="5" fill="#C4842A"/>
+    <circle cx="70" cy="42" r="5" fill="#C4842A"/>
+    <circle cx="30" cy="22" r="5" fill="#B5751A"/>
+    <circle cx="66" cy="22" r="5" fill="#B5751A"/>
+
+    <!-- Head -->
+    <circle cx="48" cy="38" r="18" fill="#E8A948"/>
+
+    <!-- Inner ears -->
+    <ellipse cx="34" cy="24" rx="4" ry="5" fill="#E8A948"/>
+    <ellipse cx="34" cy="24" rx="2.5" ry="3" fill="#F0C070"/>
+    <ellipse cx="62" cy="24" rx="4" ry="5" fill="#E8A948"/>
+    <ellipse cx="62" cy="24" rx="2.5" ry="3" fill="#F0C070"/>
+
+    <!-- Eyes - friendly, looking at screen -->
+    <ellipse cx="40" cy="36" rx="4.5" ry="5" fill="white"/>
+    <ellipse cx="56" cy="36" rx="4.5" ry="5" fill="white"/>
+    <!-- Pupils - looking down at laptop -->
+    <circle cx="41" cy="38" r="2.5" fill="#1B2A4A"/>
+    <circle cx="57" cy="38" r="2.5" fill="#1B2A4A"/>
+    <!-- Eye shine -->
+    <circle cx="42" cy="37" r="1" fill="white"/>
+    <circle cx="58" cy="37" r="1" fill="white"/>
+
+    <!-- Friendly eyebrows -->
+    <path d="M35 30 C37 28, 41 28, 44 30" stroke="#B5751A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M52 30 C55 28, 59 28, 61 30" stroke="#B5751A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Nose -->
+    <ellipse cx="48" cy="42" rx="3.5" ry="2.5" fill="#1B2A4A"/>
+    <ellipse cx="48" cy="41.5" rx="1.5" ry="1" fill="#3D4F6A" opacity="0.5"/>
+
+    <!-- Friendly smile -->
+    <path d="M42 46 C44 50, 52 50, 54 46" stroke="#1B2A4A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Whiskers -->
+    <line x1="30" y1="40" x2="18" y2="38" stroke="#C4842A" stroke-width="1" opacity="0.5"/>
+    <line x1="30" y1="43" x2="16" y2="44" stroke="#C4842A" stroke-width="1" opacity="0.5"/>
+    <line x1="66" y1="40" x2="78" y2="38" stroke="#C4842A" stroke-width="1" opacity="0.5"/>
+    <line x1="66" y1="43" x2="80" y2="44" stroke="#C4842A" stroke-width="1" opacity="0.5"/>
+
+    <!-- Tail curling up from behind -->
+    <path d="M68 70 C80 68, 84 55, 80 45 C78 40, 82 36, 86 38"
+          stroke="#D4943A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="87" cy="37" r="4" fill="#C4842A"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="120" y="48" font-family="'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#1B2A4A" letter-spacing="2">
+    Leo
+  </text>
+
+  <!-- Gold dot separator -->
+  <circle cx="180" cy="43" r="2.5" fill="#C9A84C"/>
+
+  <text x="192" y="48" font-family="'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="300" fill="#1B2A4A" letter-spacing="2">
+    AI Analytics
+  </text>
+
+  <!-- Tagline -->
+  <text x="120" y="72" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="400" fill="#999" letter-spacing="3">
+    WEBSITES &amp; TECH FOR LOCAL BUSINESS
+  </text>
+</svg>
