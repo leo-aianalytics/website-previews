@@ -54,16 +54,17 @@
         }
 
         .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
         }
         .hero-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 80px 60px;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px 40px;
             background: var(--cream);
         }
         .hero-badge {
@@ -91,9 +92,9 @@
             line-height: 1.8;
             color: var(--text);
             margin-bottom: 30px;
-            max-width: 480px;
+            max-width: 650px;
         }
-        .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+        .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
         .btn-primary {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 16px 32px;
@@ -118,15 +119,17 @@
         }
         .btn-secondary:hover { background: var(--primary); color: var(--cream); }
         .hero-image {
-            background: url('images/hero.jpg') center/cover;
-            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px 40px;
+            background: var(--cream);
         }
-        .hero-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 120px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.2));
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
         .story { padding: 100px 40px; background: var(--bg); }
@@ -145,12 +148,14 @@
         }
         .story-images img {
             width: 100%; border-radius: 6px; object-fit: cover;
+            height: auto;
         }
         .story-images img:first-child {
-            height: 280px; grid-column: span 2;
+            grid-column: span 2;
+            max-height: 350px;
         }
         .story-images img:nth-child(2),
-        .story-images img:nth-child(3) { height: 180px; }
+        .story-images img:nth-child(3) { max-height: 220px; }
         .story-label {
             font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
             text-transform: uppercase; color: var(--accent); margin-bottom: 15px;
@@ -309,9 +314,8 @@
         footer a { color: var(--accent); }
 
         @media (max-width: 768px) {
-            .hero { grid-template-columns: 1fr; }
-            .hero-image { min-height: 50vh; }
-            .hero-text { padding: 50px 25px; }
+            .hero-text { padding: 40px 20px 20px; }
+            .hero-image { padding: 0 20px 30px; }
             .story-inner { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .experience-inner { grid-template-columns: repeat(2, 1fr); }
@@ -348,7 +352,9 @@
                 <a href="#visit" class="btn-secondary">Find Us</a>
             </div>
         </div>
-        <div class="hero-image" role="img" aria-label="Pablo's Auto Body 2"></div>
+        <div class="hero-image">
+            <img src="images/hero.jpg" alt="Pablo's Auto Body 2 — Before and After">
+        </div>
     </section>
 
     <section class="story" id="story">
